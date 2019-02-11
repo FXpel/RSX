@@ -1,0 +1,26 @@
+Il faut tout d'abord ouvrir deux terminaux pour les exercice 1 et 2.
+Un pour le receveur et un autre pour envoyer les messages
+
+exemple d'utilisation exercice 1:
+
+terminal 1:
+java ReceiveUDP 1500
+
+terminal 2
+java SendUDP a13p13 1500
+
+
+
+exemple d'utilisation exercice 2:
+
+terminal 1:
+java ReceiveUDP 
+
+terminal 2:
+java SendUDP Bonjour
+
+
+
+exemple d'utilisation exercice 3:
+
+java ChatClient pseudo

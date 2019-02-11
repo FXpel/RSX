@@ -1,0 +1,27 @@
+Pelage François-Xavier groupe 6
+
+
+Exercice 2:
+
+Q1) Quelles sont les étapes pour émettre et recevoir un paquet UDP multicast sur le réseau local ?
+
+Il faut créer le mutlicastSocket sur le bon port, puis joindre ce mutticastSocket au bon groupe multicast avec la méthode joinGroupet enfin décrypter les DatagramPackets reçus.
+
+
+Q2) Quelles sont les exceptions à traiter pour chaque étape du programme d'émission et de réception ?
+
+Les exeptions à traiter sont de savoir si le DatagramPacket n'est pas nul, que le multicastSocket se crée bien et n'est pas nul, qu'il n'y a pas d'erreur sur l'adresse internet que l'on a mise et enfin qu'il n'y ait pas d'erreur lorsque l'on join le multicastSocket au groupe.
+
+
+Exercice 3:
+
+Q1)Comment réaliser un client capable d'émettre et de recevoir des paquets UDP simultanément ?
+
+la classe thread nous permet d'exercer le multitache et doncde pouvoir envoyer et recevoir en même temps des paquets UDP
+
+
+Q2)Chaque message arrivant de machines différentes, on souhaite pouvoir associer un nom symbolique à chaque machine. Proposer une solution pour que chaque message soit associé au minimum à un nom de
+machine, et au mieux d'utilisateur afin qu'il soit plus facile de suivre les conversations.
+
+
+j'ai décider de prendre la dernière partie de l'adresse IP pour pouvoir différencier les ordi.
