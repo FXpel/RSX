@@ -1,0 +1,24 @@
+﻿TP de :
+Scheirlinck Clément 
+Pelage_François-Xavier
+
+
+
+Pour compiler les fichiers il suffit de tapper la commande : make
+
+Question 1:
+cf sendUDP.java
+
+Question 2:
+cf udp.c
+Question 3:
+cf Dns.java
+tapper la commande : java Dns <nom symbolique>
+si pas d'argument il enverra une requète DNS avec le nom symbolique www.lifl.fr par défault
+Question 4:
+cf Dns.java
+Question 5:
+cf Dns.java
+méthode Dns.ipToInt
+Question 6:
+cf dns.c

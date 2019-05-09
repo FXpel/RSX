@@ -1,0 +1,183 @@
+1) Ifconfig  est utilisé pour configurer (et maintenir ensuite) les inter‐
+       faces réseau résidentes dans le noyau. Il est utilisé lors du boot pour
+       configurer  la  plupart d'entre-elles et ainsi rendre le système opéra‐
+       tionnel.
+       Si  aucun  argument n'est donné, ifconfig affiche simplement l'état des
+       interfaces actuellement définies. Si seul le  paramètre  interface  est
+       donné,  il  affiche  seulement l'état de l'interface correspondante; si
+       seul le paramètre -a est fourni, il affiche l'état de toutes les inter‐
+       faces,  même  celles  qui  ne sont pas actives. Autrement, il considère
+       qu'il faut positionner de nouvelles valeurs.
+
+2)
+Les interfaces qui sont actuellement actives sont les interfaces eth0 et lo
+
+3)
+eth0 permet de communiquer avec les autres machines, parce qu'il est en broadcast.
+
+4)
+IPV4 : 192.168.5.65 
+MAC: fe80::9a90:96ff:febb:8ec0/64
+
+5)
+pelage@b05p15:~/Bureau$ ping 192.168.5.64
+PING 192.168.5.64 (192.168.5.64) 56(84) bytes of data.
+64 bytes from 192.168.5.64: icmp_seq=1 ttl=64 time=0.793 ms
+
+6)
+temps de trajet de l'aller-retour du message.
+
+7)
+l'adresse IP permet de trouver le chemin que doit emprunter les données alors que l'adresse MAC ne représente rien sur le reseau.
+
+8) paquet echo (ping) request est le paquet envoyé
+paquet echo (ping) reply est le paquet reçu
+
+Les protocoles utilisés sont les protocoles ICMP et IPV4.
+
+9)
+La couche réseau pour ICMP et la couche liaison pour IPV4.
+
+10)
+DONE
+
+11) 
+il suffit de retirer l'option promiscuous et mettre un filtrage ICMP.
+
+
+
+ethernet
+
+1) 
+Le code de la couche supérieur est 00.
+
+2)
+Les deux premiers champs de l'entête de la trame correspondent à l'adresse MAC de la destination du message et à l'adresse MAC de la source du message.
+
+3)
+Les deux permettent d'acceder à a la carte RX et permettent de modifer la vitesse et le duplex d'une interface. 
+
+
+4)
+ethtool eth0:
+La vitesse les le duplex sont inconnus, le lien n'est plus détecté et MDI-X est passé à inconnu.
+
+ifconfig -a:
+ifconfig eth0 n'est plus en RUNNING
+
+5)
+
+CONCENTRATEUR
+
+1) Il reçoit les pings
+Cet équipement fonctionne comme un bus
+Non il ne reçoit pas
+2)
+le mode promiscuous permet de recevoir tous les messages du trafic.
+
+3)
+le mode Half
+One ne peut pas envoyer et recevoir un message en même temps
+
+4)
+
+Physique :étoile
+
+Logique :Bus 
+
+5) Collision=-1079+1449 =330 Collision
+Bande_Passante=5.59Mbit/s
+
+Avec 3 poste :
+1888-1449=439 Collision
+Bande_Passante=3.22Mbit/s
+
+Un hub fonctionne comme un repeteur ,il recoit tous les paquets envoyé par  de tous les machines (quasi-publiquement).
+
+
+
+COMMUTATEUR
+
+1)Seulement le poste concerné qu'il recoit .
+Non il ne recoit pas non plus
+
+2)Il ne recoit rien .
+
+
+3)Full :Il peut en recevoir et envoyer en meme temps
+
+4)physique:étoile.
+logique:étoile.(Car il ne distribue pas en etoile
+
+5)
+2260 .Pas de collisions .
+Bande passante=94.Mbit/s
+
+
+Avec 3 poste:
+23.2 Mbit/s (a cause d'un autre poste qui a pris tous la bande = 72.5Mbit/s)
+Pas de collisions   
+
+
+2)L'addresse est la même (sauf coupe) et lorsqu'il est branché ,il indique le port de (0/8) sur la ligne bas dit (1).
+La table de commutation(ou table de routage) permet de mettre en lien les machines branché sur la switch  
+
+3)Le switch a besoin de connaitre les adresses mac des trames mais n'a pas les  besoin des adresse IP des paquet car deja dans le trame .
+
+Le hub est dans les physique mais le switch est dans les liaison .
+
+4)switch:
+-Il prend plus de bande passante que le hub .(d'après la question 5 du switch par rapport au hubs):
+Hubs=5.59Mbit/s < Switch=94.Mbit/s (pour 2 poste)
+-Il envoie un message a sa destination .
+-Il n'y a pas de collision par rapport au hubs.
+-Il peut envoyer et recevoir des messages
+
+5)Le trame recoit des donnés :@Ladresse est Broadcast
+
+
+6)TTL P1 vers P3 est legerement inférieur a celle de P1 vers P2 car il est passé sur le routeur .cela permet de voir la porté max du message, c'est à dire le nombre de routeur par lequel il peut passer.
+sudo ifconfig eth0 inet 192.168.1.100
+
+
+7)La valeurs de TTL doit être de 1 ,ping -t 1 "@poste 3"
+La trame recoit un seul paquet qui est une requete mais il n'y a pas de reponse
+
+8)(en requete) 00:33:5e:ca:e0:98 (0023.5eca.e099) (fastEthernet) pour le envoie
+98:90:96:BB:8d:7d(eth0)
+
+9)Car l'adresse IP du poste 3 est dans la table de routage du routeur
+
+10) cf shema.png
+
+11)Les PC 1 et 2 recoivent les paquets entre eux mais pas le PC 3 .
+
+12)Le ping ne passe pas car le ping vers d'autre réseaux n'est pas possible. 
+
+13)Tous les pc recoivent les paquets. L'addresse IP des paquets reçus est celui du poste 1 (192.168.1.100). Cela permet de ne pas voir les messages des autres personnes (une fuite de données)
+
+14)Unicast =ENtre PC et PC
+limitée :Entre réseaux
+dirigée :entre plusieurs réseaux
+
+15)
+routeur:Séparation du réseau ,Il gère aussi les adresse ip du routage contrairement au switch .
+
+
+ARP
+1) arp -s XXX.XXX.X.XX YY:YY:YY:YY:YY
+
+
+2)Il ne recoivent rien car ICMP ne recoient pas d'adresse IP .Il permet d'associer une adresse ip a une adresse MAC .
+
+3)Grace au ping,la machine envoie une requète ARP associe l'adresse IP à l'adresse MAC, une fois la réponse reçue la table ARP se met à jour.
+
+4)Code associé = 0x0806
+
+5)CIble d'adresse MAC :00:00:00:00:00:00 
+Il permet de d'obtenir l'adresse mac de destination mais comme c'est vide, il est en attente de savoir à qui .
+
+6)L'adresse MAC remplace les 00 dans la rÃ©ponse.
+pour nous c'est : 98:90:96:bb:8e:c0
+
+7)Il est vide car il n'a de données à transmettre.
